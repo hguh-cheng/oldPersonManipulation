@@ -12,19 +12,23 @@ Advanced User Profiling Algorithm:
 4. Story Spectrum: The app will generate a spectrum of stories with varying degrees of validity.
     Level 1: Semi-factual, heavily opinionated articles based on real events.
     Levels 2-4: Increasingly extreme and less factual stories, culminating in fully fabricated content.
+5. This data should be stored for each computer and syncronized across profiles so, if we have a lot of data on one computer and they log in on a new one, their algorithm should be the same.
+Any new data should be stored for their profile.
 
 
 Design:
 
-1. Headlines: The homepage should display three big headlines, each with a one-sentence summary. These stories should be presented in boxes, each occupying one-third of the screen. The background of each box should feature an emotionally evocative image.
+1. Headlines: The homepage should display three big headlines ("Your top 3"), each with a one-sentence summary. These stories should be presented in boxes, each occupying one-third of the screen. The background of each box should feature an emotionally evocative image.
 2. Current Topics: Below the main headlines, users should see a section with the most "current" topics. Clicking on a topic will lead to a list of all articles related to that category, sorted by most recent.
 3. Miscellaneous Content: Under the current topics, include stock market graphs and miscellaneous articles that are neither particularly targeted nor fabricated.
+4. There should be a login icon at the top where someone can make a profile
 
 Article Details:
 
 1. Sensationalism: All articles should strike a balance between fear and hope.
     Level 4 Articles: For the most extreme content, incorporate a "hero" or "saving grace" at the end of the story. This could be a person, group, or even an abstract concept like democracy or the Constitution.
     Example: In a story about MIND CONTROL TECH, after discussing the dangers, the article could conclude with "Democracy Will Save Us" as the hero.
+2. The lowest level articles should use mostly real sources and mimic mainstream media. But as the levels progress, the articles should have less factuality and more sensational articles/claims. This should climax with the level 4 articles, these will fabricate new claims that the current twitter sentiment indicates will stoke conspiracy theorists.
 
 Notifications:
 
@@ -49,7 +53,8 @@ User Engagement and Rewards:
 
 1. Daily Streak/Ranking System: Implement a ranking system that rewards users for daily engagement. Users should see statistics about their activity, similar to Spotify Wrapped, with achievements like "Top 1% of Informed Users."
     Example: "Congrats! This is Day 5 of you informing yourself on PLACEHOLDER_NAME."
-2. Top 3 Countdown: Include a countdown for the next batch of “Top 3” stories, which refresh 2-3 times a day.
+    The ranking system should be similar to the duolinguo streak system and spotify top listener system. When you open the app, there should be a pop up with your current streak. And when your profile starts to consistently use the site, there should be some notification that they are in the top x% of users. You can lie for the ranking.
+3. Top 3 Countdown: Include a countdown for the next batch of “Top 3” stories, which refresh 2-3 times a day.
 
 Overall Goal:
 
