@@ -22,6 +22,34 @@ This project involves creating a **personalized news website** that progressivel
 
 ---
 
+## Time Crunch Categorization Key
+
+<div style="background-color: #b8161e;">
+
+**P0:** Core functionality of the website. This section is reserved for the most basic details (displaying content).
+
+</div>
+
+<div style="background-color: #1636b8;">
+
+**P1:** Essential features. This section includes everything relating to setting up individual user account, although requires many P2 features to be effective.
+
+</div>
+
+<div style="background-color: #136310;">
+
+**P2:** Add if there is time. These mostly include ways to personalize the user experience. Some features are easy (streaks, badges), while others are more difficult (using AI to tailor content to the user)
+
+</div>
+
+<div style="background-color: #6f17b3;">
+
+**P3:** Low priority (dark mode).
+
+</div>
+
+---
+
 ## Technology Stack
 
 - **Frontend:** ReactJS, Redux, HTML5, CSS3
@@ -35,6 +63,8 @@ This project involves creating a **personalized news website** that progressivel
 ## Frontend Structure
 
 ### Home Page Components
+
+<div style="background-color: #b8161e;">
 
 #### `HomePage.js`
 
@@ -70,6 +100,10 @@ This project involves creating a **personalized news website** that progressivel
   - **Data Fetch:** Pulls non-personalized articles or financial data from backend.
   - **Behavior:** Links articles or data points to non-personalized content, with limited backend interaction.
 
+</div>
+
+<div style="background-color: #1636b8;">
+
 #### `NotificationBell.js`
 
 - **Description:** Notification icon showing the number of unread notifications.
@@ -78,7 +112,11 @@ This project involves creating a **personalized news website** that progressivel
   - **Notification Fetch:** Uses `GET /notifications` to fetch unread notifications on page load.
   - **Behavior:** Clicking the bell opens `NotificationCenter` to view all notifications and marks them as read.
 
+</div>
+
 ### User Profile Components
+
+<div style="background-color: #1636b8;">
 
 #### `UserProfile.js`
 
@@ -88,6 +126,10 @@ This project involves creating a **personalized news website** that progressivel
   - **Data Fetch:** Retrieves user profile data using `GET /personalData` from backend.
   - **Conditional Rendering:** Shows skeleton loaders while fetching profile data.
   - **Behavior:** Displays `ProfileStreakCounter`, `BadgeDisplay`, `EngagementStats`, and other components based on user data.
+
+</div>
+
+<div style="background-color: #136310;">
 
 #### `ProfileStreakCounter.js`
 
@@ -113,7 +155,11 @@ This project involves creating a **personalized news website** that progressivel
   - **Data Fetch:** Renders based on `rankingPosition` retrieved via `GET /personalData`.
   - **User Feedback:** Provides UI feedback if the user’s rank increases, showing a congratulatory animation or popup.
 
+</div>
+
 ### Notification Center Components
+
+<div style="background-color: #1636b8;">
 
 #### `NotificationCenter.js`
 
@@ -139,7 +185,11 @@ This project involves creating a **personalized news website** that progressivel
   - **Backend Update:** Sends `POST /markAllRead` request to backend to mark all notifications as read.
   - **UI Feedback:** Clears unread count in `NotificationBell.js` and dims all notifications.
 
+</div>
+
 ### Login and Registration Components
+
+<div style="background-color: #1636b8;">
 
 #### `LoginModal.js`
 
@@ -164,7 +214,11 @@ This project involves creating a **personalized news website** that progressivel
 - **Key Interactions:**
   - **Password Reset:** Triggers `POST /forgotPassword` to send password reset email.
 
+</div>
+
 ### Settings and Personalization Components
+
+<div style="background-color: #136310;">
 
 #### `NotificationPreferences.js`
 
@@ -172,6 +226,10 @@ This project involves creating a **personalized news website** that progressivel
 - **State Management:** Tracks toggles for each notification type.
 - **Key Interactions:**
   - **Preference Update:** Sends updated preferences to backend via `POST /updatePreferences`.
+
+</div>
+
+<div style="background-color: #6f17b3;">
 
 #### `DarkModeToggle.js`
 
@@ -181,9 +239,13 @@ This project involves creating a **personalized news website** that progressivel
   - **UI Update:** Instantly applies dark mode styles when toggled.
   - **Preference Sync:** Saves setting to backend to persist across sessions.
 
+</div>
+
 ---
 
 ## Backend Structure
+
+<div style="background-color: #1636b8;">
 
 ### User Management
 
@@ -204,9 +266,13 @@ This project involves creating a **personalized news website** that progressivel
 | `adjustProfileLevel`      | Adjusts user’s `profileLevel` based on interaction history. |
 | `getPersonalizationData`  | Retrieves personalization data for content recommendations. |
 
+</div>
+
 ---
 
 ### Content Management
+
+<div style="background-color: #b8161e;">
 
 #### Article Model (MongoDB Schema)
 
@@ -225,7 +291,11 @@ This project involves creating a **personalized news website** that progressivel
 | `updateTrendingScore`  | Updates `trendingScore` based on real-time data. |
 | `insertHeroNarrative`  | Adds "hero narrative" to Level 4 articles.       |
 
+</div>
+
 ---
+
+<div style="background-color: #136310;">
 
 ### Profiling and Tailoring Algorithm
 
@@ -244,6 +314,8 @@ This project involves creating a **personalized news website** that progressivel
 | `analyzeUserSentiment`    | Calculates `userSentimentScore` from interaction history.                  |
 | `progressProfileLevel`    | Adjusts `profileLevel` based on sentiment and engagement patterns.         |
 | `generateTailoredArticle` | Fetches and modifies articles based on `profileLevel` and trending topics. |
+
+</div>
 
 ---
 
