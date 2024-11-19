@@ -10,8 +10,8 @@
 
 **Technical Components:**
 
-- ReactJs
 - HTML
+- CSS
 
 **Simplifications:**
 

@@ -52,7 +52,7 @@ This project involves creating a **personalized news website** that progressivel
 
 ## Technology Stack
 
-- **Frontend:** ReactJS, Redux, HTML5, CSS3
+- **Frontend:** HTML5, CSS3
 - **Backend:** Node.js, Express, MongoDB, Redis, Python for profiling algorithms
 - **Authentication:** Firebase Authentication or Auth0
 - **Notification System:** Firebase Cloud Messaging (for web push notifications)
