@@ -67,3 +67,10 @@ node_modules/
 
 # dataconnect generated files
 .dataconnect
+
+
+sentiment/venv
+sentiment/__pycache__
+sentiment/.env
+sentiment/screenshots
+cookies.json

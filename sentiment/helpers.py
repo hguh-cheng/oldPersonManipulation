@@ -1,70 +1,30 @@
 # helpers.py
-import re
-import random
-import time
+
+import os
 import logging
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
-from webdriver_manager.chrome import ChromeDriverManager
-from nltk.corpus import stopwords
-from nltk.stem import WordNetLemmatizer
-from textblob import TextBlob
-from nltk.sentiment.vader import SentimentIntensityAnalyzer
-import nltk
+from datetime import datetime
+from playwright.async_api import Page
 
-# Initialize NLTK resources
-nltk.download('stopwords')
-nltk.download('wordnet')
-nltk.download('vader_lexicon')
+async def take_screenshot(page: Page, step_name: str, folder_path: str):
+    """
+    Take a screenshot and save it to the specified folder with a descriptive name.
+    Ensures that the screenshot captures the full page content.
+    """
+    try:
+        filename = os.path.join(folder_path, f"{step_name}.png")
+        await page.screenshot(path=filename, full_page=True)
+        logging.info(f"Screenshot saved: {filename}")
+    except Exception as e:
+        logging.error(f"Failed to take screenshot for '{step_name}': {e}")
 
-# Setup Logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-
-# Browser Setup
-def get_browser(headless=True):
-    chrome_options = Options()
-    if headless:
-        chrome_options.add_argument("--headless")
-    chrome_options.add_argument("--disable-gpu")
-    chrome_options.add_argument("--no-sandbox")
-    chrome_options.add_argument("--window-size=1920,1080")
-    chrome_options.add_argument("--disable-dev-shm-usage")
-    
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
-    return driver
-
-# Human-like Delay
-def human_delay(min_seconds=2, max_seconds=5):
-    delay = random.uniform(min_seconds, max_seconds)
-    time.sleep(delay)
-
-# Text Preprocessing
-lemmatizer = WordNetLemmatizer()
-stop_words = set(stopwords.words('english'))
-
-def clean_text(text):
-    # Remove URLs
-    text = re.sub(r'http\S+', '', text)
-    # Remove mentions and hashtags
-    text = re.sub(r'[@#]\S+', '', text)
-    # Remove numbers and special characters
-    text = re.sub(r'[^A-Za-z\s]', '', text)
-    # Convert to lowercase
-    text = text.lower()
-    # Tokenize and remove stopwords
-    tokens = text.split()
-    tokens = [lemmatizer.lemmatize(word) for word in tokens if word not in stop_words]
-    return ' '.join(tokens)
-
-# Sentiment Analysis using TextBlob
-def get_sentiment_textblob(text):
-    blob = TextBlob(text)
-    return blob.sentiment.polarity  # Range: [-1.0, 1.0]
-
-# Sentiment Analysis using VADER
-sid = SentimentIntensityAnalyzer()
-
-def get_sentiment_vader(text):
-    scores = sid.polarity_scores(text)
-    return scores['compound']  # Range: [-1.0, 1.0]
+def create_screenshot_folder(screenshots_dir: str) -> str:
+    """
+    Create a new folder within the screenshots directory named with the current timestamp.
+    Returns the path to the newly created folder.
+    """
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    folder_name = f"screenshot_{timestamp}"
+    folder_path = os.path.join(screenshots_dir, folder_name)
+    os.makedirs(folder_path, exist_ok=True)
+    logging.info(f"Created screenshot folder: '{folder_path}/'")
+    return folder_path

@@ -1,8 +1,2 @@
-selenium
-webdriver-manager
-pandas
-nltk
-textblob
-transformers
+playwright
 python-dotenv
-schedule
