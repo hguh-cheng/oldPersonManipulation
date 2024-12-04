@@ -1,2 +1,11 @@
-playwright
-python-dotenv
+# requirements.txt
+
+# Ensure Python version 3.12.3 is used
+# You can specify the Python version in your environment setup or virtual environment
+# Download Python 3.12.3 from https://www.python.org/downloads/
+
+# Playwright for browser automation
+playwright==1.49.0
+
+# python-dotenv for managing environment variables
+python-dotenv==1.0.1
